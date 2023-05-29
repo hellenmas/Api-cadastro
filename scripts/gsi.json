@@ -1,0 +1,42 @@
+[
+  {
+    "IndexName": "post_user_id_created_at_idx",
+    "KeySchema": [
+      {
+        "AttributeName": "user_id",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "created_at",
+        "KeyType": "RANGE"
+      }
+    ],
+    "Projection": {
+      "ProjectionType": "ALL"
+    },
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 10,
+      "WriteCapacityUnits": 10
+    }
+  },
+  {
+    "IndexName": "post_title_created_at_idx",
+    "KeySchema": [
+      {
+        "AttributeName": "title",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "created_at",
+        "KeyType": "RANGE"
+      }
+    ],
+    "Projection": {
+      "ProjectionType": "ALL"
+    },
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 10,
+      "WriteCapacityUnits": 10
+    }
+  }
+]

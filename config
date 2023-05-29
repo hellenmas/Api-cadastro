@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/hellenmas/Api-cadastro.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
