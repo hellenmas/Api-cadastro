@@ -13,5 +13,5 @@ aws dynamodb create-table \
   AttributeName=post_id,KeyType=HASH \
   --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=10 \
   --global-secondary-indexes file://scripts/gsi.json \
-  --endpoint-url http://localhost:54000 \
-  --region ap-northeast-2 || true | cat
+  --endpoint-url http://localhost:4566 \
+  --region us-east-1 || true | cat

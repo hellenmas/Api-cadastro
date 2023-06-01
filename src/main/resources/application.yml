@@ -1,7 +1,10 @@
 amazon:
   dynamodb:
-    endpoint: http://localhost:54000
+    endpoint: http://localhost:4566
   aws:
     accessKey: 123
     secretKey: 123
-    region: ap-northeast-2
+    region: us-east-1
+
+    swagger:
+      enable: true

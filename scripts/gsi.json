@@ -1,6 +1,6 @@
 [
   {
-    "IndexName": "post_user_id_created_at_idx",
+    "IndexName": "post_user_id_created",
     "KeySchema": [
       {
         "AttributeName": "user_id",
@@ -20,7 +20,7 @@
     }
   },
   {
-    "IndexName": "post_title_created_at_idx",
+    "IndexName": "post_title_created",
     "KeySchema": [
       {
         "AttributeName": "title",

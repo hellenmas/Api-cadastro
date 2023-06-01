@@ -13,11 +13,11 @@ class Cadastro(
     var id: String = UUID.randomUUID().toString(),
 
     @field:DynamoDBAttribute(attributeName = "user_id")
-    @field:DynamoDBIndexHashKey(globalSecondaryIndexName = "post_user_id_created_at_idx")
+    @field:DynamoDBIndexHashKey(globalSecondaryIndexName = "post_user_id_created")
     var userId: String = "",
 
     @field:DynamoDBAttribute(attributeName = "title")
-    @field:DynamoDBIndexHashKey(globalSecondaryIndexName = "post_title_created_at_idx")
+    @field:DynamoDBIndexHashKey(globalSecondaryIndexName = "post_title_created")
     var title: String = "",
 
     @field:DynamoDBAttribute(attributeName = "content")
@@ -25,6 +25,6 @@ class Cadastro(
 
     @field:DynamoDBAttribute(attributeName = "created_at")
     @field:DynamoDBTypeConverted(converter = DynamoDBConfig.Companion.LocalDateTimeConverter::class)
-    @field:DynamoDBIndexRangeKey(globalSecondaryIndexNames = ["post_user_id_created_at_idx", "post_title_created_at_idx"])
+    @field:DynamoDBIndexRangeKey(globalSecondaryIndexNames = ["post_user_id_created", "post_title_created"])
     var createdAt: LocalDateTime = now()
 )

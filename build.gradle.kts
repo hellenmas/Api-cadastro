@@ -26,6 +26,12 @@ dependencies {
 	implementation("io.github.boostchicken:spring-data-dynamodb:5.2.5")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework:spring-web:6.0.6")
+	implementation("io.springfox:springfox-swagger-ui:2.6.1")
+	implementation("io.springfox:springfox-swagger2:2.6.1")
+	implementation ("io.springfox:springfox-data-rest:2.10.5")
+	implementation("org.springframework.boot:spring-boot-starter-web:3.1.0")
+	implementation("io.springfox:springfox-spring-webmvc:2.10.5")
+
 }
 
 tasks.withType<KotlinCompile> {
