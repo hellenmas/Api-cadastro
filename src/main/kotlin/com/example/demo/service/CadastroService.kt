@@ -9,4 +9,6 @@ interface CadastroService {
     fun create(request: CadastroRequest): CadastroResponse
     fun getAll(): List<Cadastro>
     fun getById(id: String): Optional<Cadastro>
+    fun update(request: CadastroRequest): CadastroResponse
+    fun delete(id: String): String
 }

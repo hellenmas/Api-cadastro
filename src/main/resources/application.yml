@@ -6,5 +6,6 @@ amazon:
     secretKey: 123
     region: us-east-1
 
-    swagger:
-      enable: true
+bootstrap:
+  servers: localhost:9092
+topic-person: teste

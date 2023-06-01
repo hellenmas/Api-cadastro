@@ -26,4 +26,20 @@ class CadastroServiceImpl @Autowired constructor(
     override fun getAll(): List<Cadastro> = cadastroRepository.findAll().toList()
 
     override fun getById(id: String): Optional<Cadastro> = cadastroRepository.findById(id)
+    override fun update(request: CadastroRequest): CadastroResponse {
+        val user = cadastroRepository.save(
+            Cadastro(
+                title = request.title,
+                content = request.content,
+                userId = request.userId
+            )
+        )
+        return CadastroResponse.from(user)
+    }
+    override fun delete(id: String): String {
+        if (!cadastroRepository.existsById(id))
+            return "Cadastro não existe na base de dados"
+        cadastroRepository.deleteById(id)
+        return "Cadastro removido com sucesso!"
+    }
 }
