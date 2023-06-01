@@ -1,9 +1,13 @@
-### Pré-requisitos
+
+<h4 align="center"> 
+	🚧  Projeto 🚀 Em construção...  🚧
+</h4>
+### 🛠 Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Intellij](https://www.jetbrains.com/pt-br/idea/). 
+[Git](https://git-scm.com), [Intellij](https://www.jetbrains.com/pt-br/idea/), [Docker](https://www.docker.com/). 
 
-### 🎲 Rodando o Back End 
+### ⚙️ Rodando o Back End 
 
 ```bash
 # Clone este repositório
@@ -19,14 +23,21 @@ $ make docker-start
 $ chmod +x ./scripts/create-dynamodb-table.sh
 
 # Execute o script logo em seguida
-$ ./scripts/create-dynamodb-table.sh
+$ ./scripts/create-dynamodb-table.sh'
 
-### 🎲 Inserindo um cadastro via Curl
+```
+### ⚙️ Inserindo um cadastro via Curl
+```bash
 
-- `curl --location --request GET 'http://localhost:8080/cadastro/5e882139-5d09-4b68-86e1-864d504f0910' \
+curl --location --request GET 'http://localhost:8080/cadastro/5e882139-5d09-4b68-86e1-864d504f0910' \
 --header 'Content-Type: application/json' \
 --data '{
     "title": "Livro",
     "content": "historia de fantasia",
     "userId": "123456"
-}'`
+}'
+```
+### ⚙️ Verificando a tabela e os dados inseridos
+```bash
+aws dynamodb scan --endpoint-url http://localhost:4566 --table-name posts
+```
