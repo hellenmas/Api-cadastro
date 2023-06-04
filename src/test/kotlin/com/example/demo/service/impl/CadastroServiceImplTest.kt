@@ -8,9 +8,8 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
 import java.util.Optional
 
@@ -34,7 +33,6 @@ class CadastroServiceImplTest {
 
         verify(exactly = 1) { repository.save(any()) }
     }
-
 
     @Test
     fun `should return all`() {
@@ -78,29 +76,30 @@ class CadastroServiceImplTest {
         every { repository.existsById("123") } returns true
         service.delete("123")
 
-        verify(exactly = 1) {repository.deleteById("123")
+        verify(exactly = 1) {
+            repository.deleteById("123")
         }
     }
 
-        fun buildTest(
-            id: String = "112121",
-            title: String = "teste",
-            content: String = "teste",
-            userId: String = "teste"
-        ) = Cadastro(
-            id = id,
-            title = title,
-            content = content,
-            userId = userId
-        )
+    fun buildTest(
+        id: String = "112121",
+        title: String = "teste",
+        content: String = "teste",
+        userId: String = "teste"
+    ) = Cadastro(
+        id = id,
+        title = title,
+        content = content,
+        userId = userId
+    )
 
-        fun buildTest2(
-            title: String = "teste",
-            content: String = "teste",
-            userId: String = "teste"
-        ) = CadastroRequest(
-            title = title,
-            content = content,
-            userId = userId
-        )
-    }
+    fun buildTest2(
+        title: String = "teste",
+        content: String = "teste",
+        userId: String = "teste"
+    ) = CadastroRequest(
+        title = title,
+        content = content,
+        userId = userId
+    )
+}

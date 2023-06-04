@@ -8,7 +8,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter
-import com.example.demo.HellenEstudoApplication
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories
@@ -22,7 +21,7 @@ import java.util.*
 
 @Configuration
 @EnableDynamoDBRepositories(basePackages = ["com.example.demo.repositories"])
-class DynamoDBConfig (
+class DynamoDBConfig(
     @Value("\${amazon.dynamodb.endpoint}") private val endpoint: String,
     @Value("\${amazon.aws.accessKey}") private val accessKey: String,
     @Value("\${amazon.aws.secretKey}") private val secretKey: String,
@@ -41,6 +40,7 @@ class DynamoDBConfig (
             }
         }
     }
+
     @Primary
     @Bean
     fun dynamoDBMapper(amazonDynamoDB: AmazonDynamoDB): DynamoDBMapper {

@@ -41,3 +41,7 @@ curl --location --request GET 'http://localhost:8080/cadastro/5e882139-5d09-4b68
 ```bash
 aws dynamodb scan --endpoint-url http://localhost:4566 --table-name posts
 ```
+### ⚙️ Link para acessar o Swagger
+```bash
+http://localhost:8080/swagger-ui/index.html
+```

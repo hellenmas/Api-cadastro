@@ -1,7 +1,7 @@
 package com.example.demo.service
 import com.example.demo.domain.Cadastro
-import com.example.demo.response.CadastroResponse
 import com.example.demo.request.CadastroRequest
+import com.example.demo.response.CadastroResponse
 import java.util.Optional
 
 interface CadastroService {

@@ -10,7 +10,7 @@ class HellenEstudoApplication
 
 private val logger: Logger = LoggerFactory.getLogger(HellenEstudoApplication::class.java)
 fun main(args: Array<String>) {
-	logger.info("iniciando a api de cadastro")
-	runApplication<HellenEstudoApplication>(*args)
-	logger.info("api de cadastro iniciada e pronta para receber requisicoes")
+    logger.info("iniciando a api de cadastro")
+    runApplication<HellenEstudoApplication>(*args)
+    logger.info("api de cadastro iniciada e pronta para receber requisicoes")
 }

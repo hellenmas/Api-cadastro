@@ -1,20 +1,17 @@
 package com.example.demo.service.impl
 
-import com.example.demo.HellenEstudoApplication
 import com.example.demo.config.KafkaConfig
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.kafka.clients.producer.ProducerRecord
-import org.apache.kafka.clients.producer.RecordMetadata
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
-import java.lang.Exception
 
 @Service
-class SendToKafka (val kafkaConfig : KafkaConfig) {
+class SendToKafka(val kafkaConfig: KafkaConfig) {
     @Autowired
     private lateinit var kafkaTemplate: KafkaTemplate<String, String>
 
