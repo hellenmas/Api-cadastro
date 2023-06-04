@@ -23,6 +23,7 @@ class CadastroController (
     @Value("\${topic-person}")
     lateinit var topic : String
     @GetMapping
+    @ApiOperation(value = "Get All", response = Cadastro::class)
     fun getAll(): List<Cadastro> = cadastroService.getAll()
 
     @GetMapping("/{id}")
@@ -30,6 +31,7 @@ class CadastroController (
     fun getById(@PathVariable(value = "id") id: String): Optional<Cadastro> = cadastroService.getById(id)
 
     @PostMapping
+    @ApiOperation(value = "Post", response = CadastroRequest::class)
     fun singup(@RequestBody request: CadastroRequest) : ResponseEntity<Any> {
         return try {
         cadastroService.create(request)
@@ -40,8 +42,10 @@ class CadastroController (
         }
     }
     @PutMapping
+    @ApiOperation(value = "Update", response = CadastroRequest::class)
     fun update(@RequestBody request: CadastroRequest) = cadastroService.update(request)
 
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "Delete by id")
     fun delete(@PathVariable(value = "id") id: String) = cadastroService.delete(id)
 }

@@ -95,7 +95,6 @@ class CadastroServiceImplTest {
         )
 
         fun buildTest2(
-            id: String = "112121",
             title: String = "teste",
             content: String = "teste",
             userId: String = "teste"

@@ -8,6 +8,9 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter
+import com.example.demo.HellenEstudoApplication
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -26,6 +29,7 @@ class DynamoDBConfig (
     @Value("\${amazon.aws.region}") private val region: String
 ) {
 
+    private val logger: Logger = LoggerFactory.getLogger(DynamoDBConfig::class.java)
     companion object {
         class LocalDateTimeConverter : DynamoDBTypeConverter<Date, LocalDateTime> {
             override fun convert(source: LocalDateTime): Date {
@@ -40,18 +44,24 @@ class DynamoDBConfig (
     @Primary
     @Bean
     fun dynamoDBMapper(amazonDynamoDB: AmazonDynamoDB): DynamoDBMapper {
-        return DynamoDBMapper(amazonDynamoDB, DynamoDBMapperConfig.DEFAULT)
+        logger.info("Creating DynamoDBMapper")
+        val mapper = DynamoDBMapper(amazonDynamoDB, DynamoDBMapperConfig.DEFAULT)
+        logger.info("DynamoDBMapper created")
+        return mapper
     }
 
     @Bean
     fun amazonDynamoDB(): AmazonDynamoDB {
+        logger.info("Creating AmazonDynamoDB client")
         val awsCredentials = BasicAWSCredentials(accessKey, secretKey)
         val awsCredentialsProvider = AWSStaticCredentialsProvider(awsCredentials)
         val endpointConfiguration = AwsClientBuilder.EndpointConfiguration(endpoint, region)
-        return AmazonDynamoDBClientBuilder.standard()
+        val client = AmazonDynamoDBClientBuilder.standard()
             .withCredentials(awsCredentialsProvider)
             .withEndpointConfiguration(endpointConfiguration)
             .build()
+        logger.info("AmazonDynamoDB client created")
+        return client
     }
 
     @Bean
