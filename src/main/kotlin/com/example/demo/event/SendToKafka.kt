@@ -1,4 +1,4 @@
-package com.example.demo.service.impl
+package com.example.demo.event
 
 import com.example.demo.config.KafkaConfig
 import com.fasterxml.jackson.databind.JsonNode

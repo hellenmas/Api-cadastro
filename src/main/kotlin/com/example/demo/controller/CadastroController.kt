@@ -1,9 +1,9 @@
 package com.example.demo.controller
 
 import com.example.demo.domain.Cadastro
+import com.example.demo.event.SendToKafka
 import com.example.demo.request.CadastroRequest
 import com.example.demo.service.CadastroService
-import com.example.demo.service.impl.SendToKafka
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
