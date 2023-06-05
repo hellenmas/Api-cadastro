@@ -23,18 +23,18 @@ $ make docker-start
 $ chmod +x ./scripts/create-dynamodb-table.sh
 
 # Execute o script logo em seguida
-$ ./scripts/create-dynamodb-table.sh'
+$ ./scripts/create-dynamodb-table.sh
 
 ```
 ### ⚙️ Inserindo um cadastro via Curl
 ```bash
 
-curl --location --request GET 'http://localhost:8080/cadastro/5e882139-5d09-4b68-86e1-864d504f0910' \
+curl --location 'http://localhost:8080/cadastro' \
 --header 'Content-Type: application/json' \
 --data '{
-    "title": "Livro",
-    "content": "historia de fantasia",
-    "userId": "123456"
+    "title": "diario teste",
+    "content": "era uma vez teste",
+    "userId": "11111"
 }'
 ```
 ### ⚙️ Verificando a tabela e os dados inseridos
