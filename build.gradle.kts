@@ -38,6 +38,9 @@ dependencies {
     // teste
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.mockk:mockk:1.12.0")
+
+    // sqs
+    implementation("io.awspring.cloud:spring-cloud-starter-aws-messaging:2.4.0")
 }
 
 tasks.withType<KotlinCompile> {

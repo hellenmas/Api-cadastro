@@ -2,6 +2,7 @@ package com.example.demo.controller
 
 import com.example.demo.domain.Cadastro
 import com.example.demo.event.SendToKafka
+import com.example.demo.event.sqs.SQSEventPublisher
 import com.example.demo.request.CadastroRequest
 import com.example.demo.service.CadastroService
 import org.slf4j.Logger
@@ -25,11 +26,17 @@ import java.util.Optional
 class CadastroController(
     private val cadastroService: CadastroService
 ) {
-    @Autowired
-    private lateinit var sendToKafka: SendToKafka
+    @Value("\${app.config.message.queue.topic}")
+    private lateinit var queue: String
 
     @Value("\${topic-person}")
     lateinit var topic: String
+
+    @Autowired
+    private lateinit var sendToKafka: SendToKafka
+
+    @Autowired
+    private lateinit var sqsEventPublisher: SQSEventPublisher
 
     private val logger: Logger = LoggerFactory.getLogger(CadastroController::class.java)
 
@@ -52,6 +59,8 @@ class CadastroController(
             cadastroService.create(request)
             sendToKafka.sendToKafkaJson(topic, request)
             logger.info("Cadastro entry created and sent to Kafka successfully")
+            sqsEventPublisher.publishMessage(queue, request)
+            logger.info("Cadastro publish message to sqs")
             ResponseEntity.ok().build()
         } catch (e: Exception) {
             logger.error("Error occurred while creating Cadastro entry: ${e.message}")

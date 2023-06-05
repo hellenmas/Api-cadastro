@@ -45,3 +45,7 @@ aws dynamodb scan --endpoint-url http://localhost:4566 --table-name posts
 ```bash
 http://localhost:8080/swagger-ui/index.html
 ```
+### ⚙️ Criando uma fila
+```bash
+aws --endpoint-url=http://localhost:4566  sqs create-queue  --queue-name teste-topic
+```
